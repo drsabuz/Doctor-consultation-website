@@ -14,7 +14,16 @@
 <main class="wrap"><div id="bookingView"><h2 class="sectionTitle" id="bookingTitle">Book your appointment</h2><p class="intro" id="bookingIntro">Select consultation type, date and an available time slot.</p><div class="toast" id="success"></div><div class="layout"><div><section class="panel"><h3 id="typeTitle">1. Choose consultation type</h3><div class="mode"><button class="active" id="chamberMode" onclick="setMode('Chamber')"><strong>🏥 <span id="chamberModeText">Chamber visit</span></strong><small id="chamberModeSub">Visit the clinic in person</small></button><button id="videoMode" onclick="setMode('Video')"><strong>📹 <span id="videoModeText">Video consultation</span></strong><small id="videoModeSub">Consult online from anywhere</small></button></div></section>
 <section class="panel"><h3 id="detailsTitle">2. Choose date & time</h3><div class="formgrid"><div class="field"><label for="date" id="dateLabel">Appointment date</label><input id="date" type="date"></div><div class="field"><label for="slot" id="timeLabel">Available time</label><select id="slot"><option value="">Select a date first</option></select></div><div class="field full"><span class="hint" id="scheduleHint">Chamber: Saturday–Thursday, 4:00 PM–8:00 PM; Friday, 9:00 AM–12:00 PM. Online slots are provisionally set to the same hours.</span></div></div></section>
 <section class="panel"><h3 id="patientTitle">3. Patient information</h3><form id="bookingForm"><div class="formgrid"><div class="field"><label for="name" id="nameLabel">Patient name *</label><input id="name" required placeholder="Full name"></div><div class="field"><label for="phone" id="phoneLabel">Mobile number *</label><input id="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></div><div class="field full"><label style="display:flex;gap:9px;align-items:flex-start;font-weight:500"><input type="checkbox" required style="margin-top:3px;width:auto"><span id="consent">I agree that the clinic may contact me about this appointment. I will share sensitive medical details only through an appropriate secure channel.</span></label></div><div class="field full"><button class="btn primary" type="submit" id="submitBtn">Request appointment</button><p class="hint" id="privacyHint">Do not use this form for emergencies or share sensitive medical details here.</p></div></div></form></section></div>
-<aside class="side"><div class="summary"><h3 id="summaryTitle">Appointment summary</h3><div class="summaryRow"><span id="sumTypeLabel">Consultation</span><b id="sumType">Chamber</b></div><div class="summaryRow"><span id="sumDateLabel">Date</span><b id="sumDate">—</b></div><div class="summaryRow"><span id="sumTimeLabel">Time</span><b id="sumTime">—</b></div><div class="summaryRow"><span id="sumFeeLabel">Consultation fee</span><b id="sumFee">৳ —</b></div><button class="btn" onclick="document.getElementById('name').focus()" id="summaryCta">Continue booking</button></div><div class="info"><h4 id="chamberInfoTitle">📍 Chamber location</h4><p id="chamberInfo">স্বদেশ হাসপাতাল, মাসকান্দা বাসস্ট্যান্ড, সদর, ময়মনসিংহ। শনিবার–বৃহস্পতিবার বিকাল ৪টা–রাত ৮টা; শুক্রবার সকাল ৯টা–দুপুর ১২টা। যোগাযোগ: 01724874658।</p></div><div class="info"><h4 id="videoInfoTitle">🔒 Online consultation</h4><p id="videoInfo">অনলাইন ফি ৬০০ টাকা। অ্যাপয়েন্টমেন্ট নিশ্চিত হলে ভিডিও কনসালটেশনের লিংক ও নির্দেশনা ফোনে জানানো হবে।</p></div></aside></div></div>
+<aside class="side"><div class="summary"><h3 id="summaryTitle">Appointment summary</h3><div class="summaryRow"><span id="sumTypeLabel">Consultation</span><b id="sumType">Chamber</b></div><div class="summaryRow"><span id="sumDateLabel">Date</span><b id="sumDate">—</b></div><div class="summaryRow"><span id="sumTimeLabel">Time</span><b id="sumTime">—</b></div><div class="summaryRow"><span id="sumFeeLabel">Consultation fee</span><b id="sumFee">৳ —</b></div><button class="btn" onclick="document.getElementById('name').focus()" id="summaryCta">Continue booking</button></div><div class="info"><h4 id="chamberInfoTitle">📍 Chamber location</h4><p id="chamberInfo">স্বদেশ হাসপাতাল, মাসকান্দা বাসস্ট্যান্ড, সদর, ময়মনসিংহ। শনিবার–বৃহস্পতিবার বিকাল ৪টা–রাত ৮টা; শুক্রবার সকাল ৯টা–দুপুর ১২টা। যোগাযোগ: 01724874658।</p></div><div class="info"><h4 id="videoInfoTitle">🔒 Online consultation</h4><p id="videoInfo">অনলাইন ফি ৬০০ টাকা। অ্যাপয়েন্টমেন্ট নিশ্চিত হলে ভিডিও কনসালটেশনের লিংক ও নির্দেশনা ফোনে জানানো হবে।</p></div></aside></div>
+<section class="panel" id="trackingPanel" style="margin-top:22px">
+  <h3>Check appointment status / অ্যাপয়েন্টমেন্টের অবস্থা জানুন</h3>
+  <p class="hint">Enter the tracking code given after booking. / বুকিংয়ের পর পাওয়া ট্র্যাকিং কোড লিখুন।</p>
+  <div class="formgrid">
+    <div class="field"><label for="trackingInput">Tracking code / ট্র্যাকিং কোড</label><input id="trackingInput" type="text" autocomplete="off" placeholder="Paste your tracking code"></div>
+    <div class="field" style="align-self:end"><button class="btn primary" type="button" id="trackingBtn">Check status / অবস্থা দেখুন</button></div>
+    <div class="field full"><p class="hint" id="trackingResult" role="status" aria-live="polite"></p></div>
+  </div>
+</section></div>
 <div class="admin" id="adminView"><div class="adminHead"><div><h2 class="sectionTitle" id="adminTitle">Admin — appointment requests</h2><p class="intro" id="adminIntro">Sign in with your authorized Supabase admin account to view patient requests.</p></div><button class="btn outline" onclick="adminSignOut()" id="signOutBtn" style="display:none">Sign out</button></div><div class="panel" id="adminLoginPanel"><form id="adminLoginForm"><div class="formgrid"><div class="field"><label for="adminEmail">Admin email</label><input id="adminEmail" type="email" autocomplete="username" required></div><div class="field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" required></div><div class="field full"><button class="btn primary" type="submit" id="adminLoginBtn">Sign in</button><button class="btn outline" type="button" id="forgotPasswordBtn" style="margin-top:10px">Forgot password?</button><p class="hint" id="adminMessage" role="status"></p></div></div></form></div><div class="panel" id="adminResetPanel" style="display:none"><h3>Set a new admin password</h3><form id="adminResetForm"><div class="formgrid"><div class="field"><label for="newAdminPassword">New password</label><input id="newAdminPassword" type="password" minlength="8" autocomplete="new-password" required></div><div class="field"><label for="confirmAdminPassword">Confirm new password</label><input id="confirmAdminPassword" type="password" minlength="8" autocomplete="new-password" required></div><div class="field full"><button class="btn primary" type="submit" id="saveAdminPasswordBtn">Save new password</button><p class="hint" id="resetMessage" role="status"></p></div></div></form></div><div class="panel" id="adminBookingsPanel" style="display:none;overflow:auto"><div class="adminHead"><b>Patient appointments</b><button class="btn outline" onclick="loadAdminBookings()" type="button">Refresh</button></div><table><thead><tr><th>ID</th><th>Patient</th><th>Phone</th><th>Type</th><th>Date</th><th>Time</th><th>Status</th><th>Action</th></tr></thead><tbody id="bookingRows"><tr><td colspan="8">No bookings loaded</td></tr></tbody></table></div><button class="btn outline" onclick="toggleAdmin()" id="backBtn">Back to website</button></div>
 </main><footer class="footer"><div class="wrap"><span id="footerText">© Your Doctor Clinic. All rights reserved.</span><span id="footerNote">Appointment requests are submitted to the secure booking server.</span></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -107,6 +116,87 @@ async function loadAdminBookings(){
 }
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 async function confirmAppointment(id){
+  if(!confirm('Confirm this appointment?'))return;
+  try{
+    const {error}=await supabaseClient.from('appointments').update({status:'confirmed'}).eq('id',id);
+    if(error)throw error;
+    await loadAdminBookings();
+    alert('Appointment confirmed.');
+  }catch(err){
+    alert('Could not confirm appointment: '+err.message+'\nIf this mentions row-level security or permission, an admin UPDATE policy is needed in Supabase.');
+  }
+}
+
+
+$('trackingBtn').addEventListener('click',async()=>{
+  const code=$('trackingInput').value.trim();
+  const resultBox=$('trackingResult');
+  if(!code){resultBox.textContent='Please enter your tracking code. / ট্র্যাকিং কোড লিখুন।';return;}
+  const btn=$('trackingBtn');btn.disabled=true;resultBox.textContent='Checking… / দেখা হচ্ছে…';
+  try{
+    const {data,error}=await supabaseClient.rpc('lookup_appointment_status',{p_tracking_code:code});
+    if(error)throw error;
+    const row=Array.isArray(data)?data[0]:data;
+    if(!row){resultBox.textContent='No appointment found for this code. / এই কোডে কোনো অ্যাপয়েন্টমেন্ট পাওয়া যায়নি।';return;}
+    const status=String(row.status||'pending').toLowerCase();
+    const statusLabel=status==='confirmed'?'Confirmed / নিশ্চিত':status==='pending'?'Pending / অপেক্ষমাণ':status;
+    resultBox.textContent='Status: '+statusLabel+' | Date: '+String(row.appointment_date||'')+' | Time: '+String(row.appointment_time||'');
+  }catch(err){resultBox.textContent='Could not check status: '+(err.message||'Please try again.');}
+  finally{btn.disabled=false;}
+});
+$('trackingInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('trackingBtn').click();});
+
+$('bookingForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!$('date').value||!$('slot').value){
+    alert(lang==='bn'?'তারিখ ও সময় নির্বাচন করুন।':'Please select a date and time.');
+    return;
+  }
+  const submitButton=$('submitBtn');
+  submitButton.disabled=true;
+  submitButton.textContent=lang==='bn'?'পাঠানো হচ্ছে...':'Sending...';
+  $('success').style.display='none';
+  try{
+    const bytes=new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    const trackingCode=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
+    const coreRecord={
+      patient_name:$('name').value.trim(),
+      patient_phone:$('phone').value.trim(),
+      appointment_date:$('date').value,
+      appointment_time:$('slot').value,
+      tracking_code:trackingCode,
+      status:'pending'
+    };
+    let result=await supabaseClient.from('appointments').insert([{...coreRecord,consultation_type:mode}]);
+    if(result.error && /consultation_type|column .* does not exist|schema cache/i.test(result.error.message||'')){
+      result=await supabaseClient.from('appointments').insert([coreRecord]);
+    }
+    if(result.error) throw result.error;
+    $('success').style.display='block';
+    $('success').textContent=lang==='bn'
+      ?'আপনার অ্যাপয়েন্টমেন্টের অনুরোধ সফলভাবে পাঠানো হয়েছে। ট্র্যাকিং কোড: '+trackingCode+'। কোডটি সংরক্ষণ করুন; পরে এই কোড দিয়ে অবস্থা জানতে পারবেন।'
+      :'Your appointment request was submitted successfully. Your tracking code is: '+trackingCode+'. Save this code to check your appointment status later.';
+    $('bookingForm').reset();
+    const now=new Date();
+    $('date').value=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+    buildSlots();
+    updateSummary();
+    window.scrollTo({top:document.querySelector('main').offsetTop-80,behavior:'smooth'});
+  }catch(err){
+    console.error('Supabase booking error:',err);
+    $('success').style.display='block';
+    $('success').textContent=(lang==='bn'?'অনুরোধ পাঠানো যায়নি: ':'Could not submit appointment: ')+(err.message||'Please try again.');
+  }finally{
+    submitButton.disabled=false;
+    submitButton.textContent=dict[lang].submitBtn;
+  }
+});
+Object.entries(dict[lang]).forEach(([k,v])=>{if($(k))$(k).textContent=v});$('feeChamber').textContent='নতুন ৳৭০০ / পুরাতন ৳৫০০';$('feeOnline').textContent='৳৬০০';$('chamberFeeText').textContent='চেম্বার ফি';$('onlineFeeText').textContent='অনলাইন ফি';setMode(mode);buildSlots();updateSummary();
+</script>
+</body>
+</html>
+
   if(!confirm('Confirm this appointment?'))return;
   try{
     const {error}=await supabaseClient.from('appointments').update({status:'confirmed'}).eq('id',id);
